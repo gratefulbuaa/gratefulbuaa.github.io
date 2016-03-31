@@ -4,7 +4,7 @@ title:  "Pyspark connect ES"
 date:   2016-03-31
 category: 随手记
 tagline: "Supporting tagline"
-tags: [Pyspark, elasticsearch,]
+tags: [Pyspark, elasticsearch,org.elasticsearch.hadoop.mr.LinkedMapWritable,]
 ---
 
 
@@ -67,9 +67,11 @@ pyspark --jars /bigdata/software/elasticsearch-hadoop-2.2.0/dist/elasticsearch-s
 
 
  ```
+
 想获取的数据是：cmdid= 10017, 且"RequestBody"中params 中的handle_type ＝ 4，同时满足两个条件的数据。
 在数据库中handle_type 有4个取值（1，2，3，4）,
 先用query 和filter 尝试：
+
 
 ```
 {
