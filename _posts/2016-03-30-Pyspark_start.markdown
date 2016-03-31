@@ -6,9 +6,9 @@ category: 随手记
 tagline: "Supporting tagline"
 tags: [Pyspark, elasticsearch,]
 ---
-# pyspark visit elasticsearch
 
-task：elasticsearch 中取数据
+
+# pyspark 怎样从 elasticsearch 中取数据
 
 遇见如下几个问题：
 
