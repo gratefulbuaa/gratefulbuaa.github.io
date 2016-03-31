@@ -1,16 +1,9 @@
 ---
 layout: post
-title:  "Rule my thoughts"
+title:  "序言"
 date:   2016-03-30 11:47:56 +0800
 category: 随手记
 tagline: "Supporting tagline"
 tags: [序言]
 ---
 有时看起来很简单的事情，真正做却会遇见很多问题，解决问题是一个不断试错的过程，想着把试错的过程记下来，说不定会帮助像我一样的人。
-
-[点我去百度](http://www.baidu.com)
-
-```python
-def new_functions():
-  print 's'
-```
