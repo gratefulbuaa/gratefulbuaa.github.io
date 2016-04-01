@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Pyspark connect ES"
+title:  "Pyspark学习笔记第1篇：connect ES"
 date:   2016-03-31
 category: 随手记
 tagline: "Supporting tagline"
@@ -8,9 +8,9 @@ tags: [Pyspark, elasticsearch,org.elasticsearch.hadoop.mr.LinkedMapWritable,]
 ---
 
 
-# pyspark 怎样从 elasticsearch 中取数据
+pyspark 怎样从 elasticsearch 中取数据
 
-遇见如下几个问题：
+在尝试连接es时，遇见如下几个问题：
 
 ### 1. connect elasticserch Error
 

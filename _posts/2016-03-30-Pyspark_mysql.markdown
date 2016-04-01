@@ -1,15 +1,13 @@
 ---
 layout: post
-title:  "Pyspark connect mysql"
+title:  "Pyspark学习笔记第2篇：connect mysql"
 date:   2016-03-31
 category: 随手记
 tagline: "Supporting tagline"
 tags: [Pyspark,mysql,jdbc]
 ---
 
-# pyspark 怎样将 rdd 写到 mysql
-
-接上一篇 pyspark connect ES
+pyspark 怎样将 rdd 写到 mysql,接上一篇 pyspark connect ES
 
 ### 1. 错误的尝试
 开始，直接尝试用python 中torndb 自建函数写库，发现这种方法比较难，pyspark 在传递函数时，
@@ -38,15 +36,16 @@ out_df.show(4)
 接下来 set mysql connect information, 写入就行了
 
 ```python
+# db information
 host_ip = '*.*.*.*'
 port = '****'
 user_name = 'user_name'
 password = 'password'
-# db information
 dbname = 'dbname'
 table = 'table_name'
 url = "jdbc:mysql://%s:%s/%s"%(host_ip,port,dbname)
 properties = {"user": user_name,"password": password}
+
 out_df.write.jdbc(mode='append',url=url,table=table,properties=properties)
 
 ```
@@ -107,4 +106,59 @@ out_df.timestamp --> mysql table['target']
 columns = (u'newid',u'request',u'target',u'timestamp')
 out_df.select(*columns).write.jdbc(mode='append',url=url,table=table,properties=properties)
 ```
+
 就Ok 了。
+
+### 3. 补充：如何 read data from mysql
+
+```python
+# db information
+host_ip = '*.*.*.*'
+port = '****'
+user_name = 'user_name'
+password = 'password'
+dbname = 'dbname'
+table = 'table_name'
+url = "jdbc:mysql://%s:%s/%s"%(host_ip,port,dbname)
+properties = {"user": user_name,"password": password}
+
+tmp2 = sqlContext.read.jdbc(  
+        url=url,
+        table=table,
+        properties=properties)
+tmp2.show()
++-----+-------+-------+-------------+
+|newid|request| target|      addtime|
++-----+-------+-------+-------------+
+|    1|  52465|2627816|1459353702543|
+|    2| 272357|2288924|1459353708029|
+|    3|  52465| 325509|1459353686840|
+|    4|  52465|2627816|1459353726933|
++-----+-------+-------+-------------+
+
+```
+
+or you can use sqlContext.read.format('jdbc').options [链接例子](http://stackoverflow.com/questions/27718382/how-to-work-with-mysql-db-and-apache-spark)
+如果你想添加查询条件，可以这样做：
+
+```python
+query = "(select v.newid, v.request from visit_stranger_profile as v) as temtable"
+tmp2 = sqlContext.read.jdbc(  
+        url=url,
+        table=query,
+        properties=properties)
+tmp2.show(5)
+
++-----+-------+
+|newid|request|
++-----+-------+
+|  217|   -100|
+| 2984|   -100|
+| 3014|   -100|
+| 3018|   -100|
+|  130|    253|
++-----+-------+
+
+```
+
+finish
