@@ -17,7 +17,7 @@ tags: [Pyspark,mysql,jdbc]
 如果函数调用了别的自建的 class 或 function 就要求每个节点都能正确调用，这就比较麻烦，放弃。
 
 ### 2. jdbc to mysql
-文档说明 [jdbc documentation] (https://spark.apache.org/docs/latest/api/python/pyspark.sql.html?highlight=jdbc#pyspark.sql.DataFrame)
+文档说明 [jdbc documentation](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html?highlight=jdbc#pyspark.sql.DataFrame)
 接下来尝试使用jdbc 写到 mysql， jdbc 的操作要求，所用的数据的格式是 dataframe， 因而，首先要将
 rdd 转化成 dataframe
 
