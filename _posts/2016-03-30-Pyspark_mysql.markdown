@@ -7,8 +7,9 @@ tagline: "Supporting tagline"
 tags: [Pyspark,mysql,jdbc]
 ---
 
-接上一篇 pyspark connect ES
 # pyspark 怎样将 rdd 写到 mysql
+
+接上一篇 pyspark connect ES
 
 ### 1. 错误的尝试
 开始，直接尝试用python 中torndb 自建函数写库，发现这种方法比较难，pyspark 在传递函数时，
